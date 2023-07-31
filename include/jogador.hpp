@@ -22,6 +22,8 @@ class Jogador{
 
         int getChute();
 
+        std::string getNome();
+
         void setpontuacao();
 };
 

@@ -21,3 +21,8 @@ int Jogador::getPont(){
 int Jogador::getChute(){
     return _chute;
 }
+
+
+std::string Jogador::getNome(){
+    return _nome;
+}
