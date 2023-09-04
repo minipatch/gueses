@@ -22,16 +22,15 @@ bool is_opcao(std::string opcao){
 
 int main(){
 
-    std::cout<<"bem vindo ao gueses"<<std::endl<<std::endl;
+    std::cout<<"bem vindo ao gueses"<<std::endl;
 
     std::cout<<"Deseja jogar ou acessar historico? "<<std::endl;
 
-    std::string opcao = "jogar";
+    std::string opcao;
 
 
     while(is_opcao(opcao) == false){
-        std::cin>>opcao;
-
+        std::getline(std::cin,opcao);
         if(is_opcao(opcao) == false){
             std::cout<<"voce digitou uma opcao invalida"<<std::endl;
         }    
@@ -43,7 +42,7 @@ int main(){
 
 
     if(opcao == "jogar"){
-        std::string nome1="samira",nome2="silva";
+        std::string nome1,nome2;
 
         std::cout<<"digite nome do primeiro jogador"<<std::endl;
 
@@ -52,7 +51,7 @@ int main(){
         std::cout<<"digite nome do segundo jogador"<<std::endl;
 
 
-        std::getline(std::cin, nome1);
+        std::getline(std::cin, nome2);
 
         Jogador j1(nome1);
 
@@ -63,10 +62,12 @@ int main(){
 
         int turno = 1;
 
-        int chute1=0,chute2=0;
 
 
         while (j1.getPont() != 3 || j2.getPont() != 3) {
+
+            int chute1=0,chute2=0;
+
 
             std::cout<<"turno: "<< turno <<std::endl;
 
@@ -74,11 +75,11 @@ int main(){
             int valor = b1.getChute();
 
 
-            std::cout<<"qual valor gostaria de colocar? "<<nome1 <<std::endl;
+            std::cout<<"qual valor gostaria de colocar? "<<j1.getNome() <<std::endl;
             
-            while(chute1>3){
+            while(chute1>3||chute1<1){
                 std::cin>>chute1;
-                if(chute1>3){
+                if(chute1>3 ||chute1<1){
                     std::cout<<"coloque numero de 1 a 3"<<std::endl;
                 }
             
@@ -86,11 +87,11 @@ int main(){
             
             j1.setchute(chute1);
 
-            // std::cout<<"qual valor gostaria de colcoar? "<<nome2 <<std::endl;
+            std::cout<<"qual valor gostaria de colcoar? "<<j2.getNome() <<std::endl;
             
-            while(chute2>3){
+            while(chute2>3 || chute2<1){
                 std::cin>>chute2;
-                if(chute2>3){
+                if(chute2>3||chute2<1){
                     std::cout<<"coloque numero de 1 a 3"<<std::endl;
                 }
             }
@@ -138,7 +139,7 @@ int main(){
         }
 
 
-        std::ofstream file("ganhador");
+        std::ofstream file("ganhador",std::ios::app);
 
         file<<"score of " << nome1 << ": "<< j1.getPont() <<std::endl;
 

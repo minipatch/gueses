@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <random>
 #include <cstdlib>
 
 class Bot{

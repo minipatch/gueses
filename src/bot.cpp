@@ -4,12 +4,15 @@ Bot::Bot(){
 
 }
 
-void Bot::ChuteAlea(){
-    std::srand(std::time(0));
-    while(_chute == 0){
-        _chute = std::rand() % 3;
-    }
+void Bot::ChuteAlea() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(1, 3);
+
+    _chute = dist(gen); // Gera um número aleatório usando a distribuição e o gerador
 }
+
+
 
 int Bot::getChute(){
     return _chute;
